@@ -1,0 +1,8 @@
+﻿<Window x:Class="IndicadoresV1._001.Vista.Contenedor_Principal.AplicacionPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AplicacionPrincipal" Height="432" Width="603">
+    <Grid Name="contenedor">
+        
+    </Grid>
+</Window>

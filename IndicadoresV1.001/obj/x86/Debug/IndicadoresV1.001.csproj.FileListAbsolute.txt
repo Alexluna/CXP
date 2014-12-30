@@ -1,0 +1,44 @@
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.exe
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.pdb
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001_MarkupCompile.cache
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.g.resources
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1._001.Properties.Resources.resources
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.csproj.GenerateResource.Cache
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.exe
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.pdb
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.baml
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.g.cs
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.baml
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.g.cs
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.baml
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.g.cs
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\App.g.cs
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.baml
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.g.cs
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\itextsharp.dll
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.csprojResolveAssemblyReference.cache
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.baml
+C:\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.exe
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.pdb
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.exe
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.pdb
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.baml
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.baml
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.baml
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.baml
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.baml
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\App.g.cs
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001_MarkupCompile.cache
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.g.resources
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1._001.Properties.Resources.resources
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.exe
+D:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.pdb
