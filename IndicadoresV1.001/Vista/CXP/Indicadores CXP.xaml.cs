@@ -13,6 +13,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndicadoresV1._001.SDK_Admipaq.Modelo;
 using IndicadoresV1._001.SDK_Admipaq.Controlador;
+using IndicadoresV1._001.Vista.Cargador;
+using System.Threading;
 
 
 namespace IndicadoresV1._001.Vista.CXP
@@ -45,17 +47,85 @@ namespace IndicadoresV1._001.Vista.CXP
                 if (controladorSDK.GetConexion())//antes de hacer algo verifico si existe alguna conexion con alguna empresa
                 {
 
-                    ListDocmuentos = new List<Tipos_Datos_CRU.Movimientos_Cuentas>();//inicializo mi lista donde tendra mis documentos
-                    ListDocmuentos = controladorSDK.get_Movimientos_Compras(fechainicial.SelectedDate.Value.ToString("MM/dd/yyyy"), fechafinal.SelectedDate.Value.ToString("MM/dd/yyyy"));
-                    //dataGrid1.ItemsSource = ListDocmuentos; //((System.ComponentModel.IListSource)view.ToTable()).GetList();//meto los datos del dataview a mi datagrid
-                    string fecha = fechainicial.SelectedDate.Value.ToString("dd/MM/yyyy") + "-" + fechafinal.SelectedDate.Value.ToString("dd/MM/yyyy");
-                    controlaimpresion.impresion_movimientos_productos(ListDocmuentos, fecha, fecha, RuteEmpresa.Text);
-                    MessageBox.Show("Termino");
+                    OnWorkerMethodStart();
+
+
+                    
+                   
                 }
                 else System.Windows.MessageBox.Show("Necesita Seleccionar una Empresa", "Alerta", MessageBoxButton.OK, MessageBoxImage.Warning);//ma
             }
         }
 
+
+
+        CargadorBar cargador;
+        MainWindow ventaprincipal;
+        private void OnWorkerMethodStart()
+        {
+            //creamos el objeto de nuestra clase 
+            WorkerProgressBar workerfactura = new WorkerProgressBar();
+            //por medio de un delegado instanciamos el metodo que se debera ejecutar en segundo plano, aqui seleccionamos el metodo logear
+            //este metodo se encuentra en esta clase
+            //int mes = Convert.ToInt32(comboBoxMes.SelectedIndex) + 1;//obtengo el mes del cual se realizara el filtro
+            string fechainicial1 = fechainicial.SelectedDate.Value.ToString("MM/dd/yyyy");//obtengo mi fechaincial para mi filtro
+            string fechafinal1 = fechafinal.SelectedDate.Value.Date.ToString("MM/dd/yyyy");//obtengo mi fecha final para mi filtro
+
+
+            workerfactura.get_data_CXP += new WorkerProgressBar.DelegateCXP(get_data_);
+            workerfactura.fechafinal = fechafinal1; // le asignamos el correo a la clase creada (ingresado por el usuairo)
+            workerfactura.fechainicial = fechainicial1; // le asignamos el password a la clase creada (ingresado por el usuario)
+            workerfactura.ruta_empresa = RuteEmpresa.Text;
+
+            //creamos el hilo para ejecutar el proceso en segundo plano, en el pasamos como argumento el metodo que queremos ejecutar
+            //el metodo que se ejecutara es el metodo que se encuentra en la clase creado
+            ThreadStart tStart = new ThreadStart(workerfactura.CRU_mtehod);
+            Thread t = new Thread(tStart); //iniciamos el hilo
+
+            t.Start(); // inicializa el hilo
+
+            cargador = new CargadorBar(); //Creamos el objeto de la clase CargadorBar (este clase contiene el cargador)
+            cargador.Owner = ventaprincipal; //asignamos que este objeto es modela relacionando  cual es su propietario
+            cargador.ShowDialog(); //mostramo el cargador (este metodo se ejecutara )
+
+            //finalmente obtenemos el resultado del metodo logear para seleccionar la respuesta que tendra 
+
+
+        }
+
+        private void get_data_(string fechainicial, string fechafinal, string ruta_empresa)
+        {
+
+            ListDocmuentos = new List<Tipos_Datos_CRU.Movimientos_Cuentas>();//inicializo mi lista donde tendra mis documentos
+            ListDocmuentos = controladorSDK.get_Movimientos_Compras(fechainicial, fechafinal);
+            //dataGrid1.ItemsSource = ListDocmuentos; //((System.ComponentModel.IListSource)view.ToTable()).GetList();//meto los datos del dataview a mi datagrid
+            string fecha = fechainicial+ "-" + fechafinal;
+            controlaimpresion.impresion_movimientos_productos(ListDocmuentos, fecha, fecha, ruta_empresa);
+
+
+
+            cargador.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+            new Action(
+            delegate()
+            {
+                cargador.Close();
+            }
+            ));
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         private void Selecciona_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();

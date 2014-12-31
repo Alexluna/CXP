@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\
 IndicadoresV1._001
 none
 false
 DEBUG;TRACE
-F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\App.xaml
-5-1065219321
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\App.xaml
+6-437085373
 
-16254287243
-16749517852
-MainWindow.xaml;Vista\Contenedor Principal\AplicacionPrincipal.xaml;Vista\CRU\Indicadores CRU.xaml;Vista\CXP\Indicadores CXP.xaml;Vista\Principal\Principal.xaml;
+18-1079529358
+17604357561
+MainWindow.xaml;Vista\Cargador\CargadorBar.xaml;Vista\Contenedor Principal\AplicacionPrincipal.xaml;Vista\CRU\Indicadores CRU.xaml;Vista\CXP\Indicadores CXP.xaml;Vista\Principal\Principal.xaml;
 
 False
 

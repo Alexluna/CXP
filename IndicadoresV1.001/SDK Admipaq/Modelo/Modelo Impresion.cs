@@ -3061,8 +3061,8 @@ namespace IndicadoresV1._001.SDK_Admipaq.Modelo
 
                 string fecha_Actual;//fecha en la que se encuentra actualmente el temporal 
                 string[] fecha = fechas.Split('-');
-                fecha_inicial = Convert.ToDateTime(fecha[0], new CultureInfo("es-ES"));
-                fecha_final = Convert.ToDateTime(fecha[1], new CultureInfo("es-ES"));
+                fecha_inicial = Convert.ToDateTime(fecha[0]);
+                fecha_final = Convert.ToDateTime(fecha[1]);
                 //MessageBox.Show("Fecha  inicial " + fecha_inicial);
                 //MessageBox.Show("Fecha  final " + fecha_final);
 

@@ -665,6 +665,14 @@ namespace IndicadoresV1._001.SDK_Admipaq.Controlador
         public List<Tipos_Datos_CRU.Movimientos_Cuentas> get_Movimientos_Compras(string fechainicial, string fechafinal)
         {
             List<Tipos_Datos_CRU.Movimientos_Cuentas> ListMovimientos_Compras = new List<Tipos_Datos_CRU.Movimientos_Cuentas>();//Creo el objeto donde regresare los movimientos de las compras 
+            List<Tipos_Datos_CRU.Clasificacion1> List_clasificacion1 = new List<Tipos_Datos_CRU.Clasificacion1>();
+            List<Tipos_Datos_CRU.Clasificacion1> List_clasificacion2 = new List<Tipos_Datos_CRU.Clasificacion1>();
+            List<Tipos_Datos_CRU.Dataclient> ListCliente = new List<Tipos_Datos_CRU.Dataclient>();
+            List<Tipos_Datos_CRU.Clasificacion1> List_clasificacion_producto1 = new List<Tipos_Datos_CRU.Clasificacion1>();
+            List<Tipos_Datos_CRU.Clasificacion1> List_clasificacion_producto2 = new List<Tipos_Datos_CRU.Clasificacion1>();
+            List<Tipos_Datos_CRU.Clasificacion1> List_clasificacion_producto3 = new List<Tipos_Datos_CRU.Clasificacion1>();
+
+            List<Tipos_Datos_CRU.Producto_data> List_productos_datos = new List<Tipos_Datos_CRU.Producto_data>();
             DataTable dtD = ModeloSDK.get_documentos_Compras(fechainicial, fechafinal);//obtengo los movimientos en un datatable
 
             if (dtD == null)//si tiene null siginifica que sucedio algun error 
@@ -676,59 +684,155 @@ namespace IndicadoresV1._001.SDK_Admipaq.Controlador
                 //  string[] fecha_partes = fecha[0].Split('/');//separa la fecha por dia mes y año [DIA][MES][AÑO]
                 Tipos_Datos_CRU.Movimientos_Cuentas newDocument = new Tipos_Datos_CRU.Movimientos_Cuentas()//crea el objeto para la lista
                 {
-                    fecha = fecha[0].TrimEnd(' '),
-                    Proveedor = Convert.ToString(row[1]).TrimEnd(' '),
-                    CantidadProducto = Convert.ToString(row[2]).TrimEnd(' '),
-                    PrecioProducto = Convert.ToString(row[3]).TrimEnd(' '),
+                    fecha = fecha[0].Trim(),
+                    Proveedor = Convert.ToString(row[1]).Trim(),
+                    CantidadProducto = Convert.ToString(row[2]).Trim(),
+                    PrecioProducto = Convert.ToString(row[3]).Trim(),
                     Subtotal = (float)(double)row[4],
                     IVA = (float)(double)row[5],
                     Total = (float)(double)row[6],
-                    ID_doc = Convert.ToString(row[7]).TrimEnd(' '),
-                    IDCliente = Convert.ToString(row[8]).TrimEnd(' '),
-                    pendiente = Convert.ToString(row[9]).TrimEnd(' '),
-                    folio = Convert.ToString(row[10]).TrimEnd(' ')
+                    ID_doc = Convert.ToString(row[7]).Trim(),
+                    IDCliente = Convert.ToString(row[8]).Trim(),
+                    pendiente = Convert.ToString(row[9]).Trim(),
+                    folio = Convert.ToString(row[10]).Trim()
                 };
 
-
+                //aqui obtneo los datos del movieminto con sus respectivos productos
                 DataRow rowproducto = ModeloSDK.get_Movimientos_Productos(newDocument.ID_doc);
 
                 if (rowproducto != null)//si regresa null significa que existio algun error y por lo cual no ara nada
                 {
-                    newDocument.producto_codigo = Convert.ToString(rowproducto[0]).TrimEnd(' ');
-                    newDocument.producto_nombre = Convert.ToString(rowproducto[1]).TrimEnd(' ');
+                    newDocument.producto_codigo = Convert.ToString(rowproducto[0]).Trim();
+                    newDocument.producto_nombre = Convert.ToString(rowproducto[1]).Trim();
+                
+
+
+                //obtengo las clasificaciones meter en un arreglo los datos de la clasificacion 1 *********************
+                int set_clasificaion1 = -8;
+                for (int l = 0; l < List_clasificacion1.Count; l++)
+                {//si encuentra el mismo id dentro del arreglo entonces solo meto los datos luna mal
+                    if (List_clasificacion1[l].id.Trim().Equals(Convert.ToString(rowproducto[2])))
+                    {
+                        set_clasificaion1 = l;
+                        break;
+                    }
+                    
                 }
-
-
-
-                string resp = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowproducto[2])));
-                string[] words = resp.Split(',');
-                newDocument.Valor_Clasificacion_1_producto = words[0].TrimEnd(' ');
-                newDocument.Clasificacion_1_producto = words[1].TrimEnd(' ');
-
-
-                string resp2 = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowproducto[3])));
-                string[] words2 = resp.Split(',');
-                newDocument.Valor_Clasificacion_2_producto = words2[0].TrimEnd(' ');
-                newDocument.Clasificacion_2_producto = words2[1].TrimEnd(' ');
-
-                DataRow rowprovedor = ModeloSDK.get_codigo_proveedor(newDocument.IDCliente);//obtengo el codigo del provedor  sus valores 
-
-                if (rowprovedor != null)
+                if (set_clasificaion1 < 0)
                 {
-                    newDocument.Proveedor_codigo = Convert.ToString(rowprovedor[0]);
+                    string resp = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowproducto[2]).Trim()));
+                    string[] words = resp.Split(',');
+                    newDocument.Valor_Clasificacion_1_producto = words[0].Trim();
+                    newDocument.Clasificacion_1_producto = words[1].Trim();
 
-                    string response = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowprovedor[1])));
-                    string[] words_ = response.Split(',');
-                    newDocument.Valor_Clasificacion_1_proveedor = words_[0].TrimEnd(' ');
-                    newDocument.Clasificacion_1_proveedor = words_[1].TrimEnd(' ');
+                    Tipos_Datos_CRU.Clasificacion1 new_clasif = new Tipos_Datos_CRU.Clasificacion1()
+                    {
+                        id = Convert.ToString(rowproducto[2]),
+                        nombre_clasifiacion1 = resp
+                    };
+                    List_clasificacion1.Add(new_clasif);
+                }
+                else {
 
-
-                    string responce2 = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowprovedor[2])));
-                    string[] words2_ = responce2.Split(',');
-                    newDocument.Valor_Clasificacion_2_proveedor = words2_[0].TrimEnd(' ');
-                    newDocument.Clasificacion_2_proveedor = words2_[1].TrimEnd(' ');
+                    string resp = List_clasificacion1[set_clasificaion1].nombre_clasifiacion1;
+                    string[] words = resp.Split(',');
+                    newDocument.Valor_Clasificacion_1_producto = words[0].Trim();
+                    newDocument.Clasificacion_1_producto = words[1].Trim();
+                }
+                //***********************************************************************************
+                int set_clasificaion2 = -8;
+                for (int l = 0; l < List_clasificacion2.Count; l++)
+                {//si encuentra el mismo id dentro del arreglo entonces solo meto los datos 
+                    if (List_clasificacion2[l].id.Trim().Equals(Convert.ToString(rowproducto[3])))
+                    {
+                        set_clasificaion2 = l;
+                        break;
+                    }
 
                 }
+                if (set_clasificaion2 < 0)
+                {
+                    //obtengo las clasificaciones meter en un arreglo los datos de la clasificacion 2 *****************
+                    string resp2 = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowproducto[3]).Trim()));
+                    string[] words2 = resp2.Split(',');
+                    newDocument.Valor_Clasificacion_2_producto = words2[0].Trim();
+                    newDocument.Clasificacion_2_producto = words2[1].Trim();
+
+                    Tipos_Datos_CRU.Clasificacion1 new_clasif = new Tipos_Datos_CRU.Clasificacion1()
+                    {
+                        id = Convert.ToString(rowproducto[3]),
+                        nombre_clasifiacion1 = resp2
+                    };
+                    List_clasificacion2.Add(new_clasif);
+                }
+                else
+                {
+
+                    string resp = List_clasificacion2[set_clasificaion2].nombre_clasifiacion1;
+                    string[] words = resp.Split(',');
+                    newDocument.Valor_Clasificacion_2_producto = words[0].Trim();
+                    newDocument.Clasificacion_2_producto = words[1].Trim();
+                }
+
+                //************************************
+                }//rowproducto mal
+
+
+                //guardar los datos de los clietne **********
+                int set_cliente = -8;
+                for (int l = 0; l < ListCliente.Count; l++)
+                {
+                    if (ListCliente[l].id.Trim().Equals(newDocument.IDCliente.Trim()))
+                    {
+                        set_cliente = l;
+                        break;
+                    }
+                }
+
+                if (set_cliente < 0)
+                {
+                    DataRow rowprovedor = ModeloSDK.get_codigo_proveedor(newDocument.IDCliente);//obtengo el codigo del provedor  sus valores 
+
+                    if (rowprovedor != null)
+                    {
+                        newDocument.Proveedor_codigo = Convert.ToString(rowprovedor[0]);
+
+                        string response = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowprovedor[1])));
+                        string[] words_ = response.Split(',');
+                        newDocument.Valor_Clasificacion_1_proveedor = words_[0].Trim();
+                        newDocument.Clasificacion_1_proveedor = words_[1].Trim();
+
+
+                        string responce2 = Convert.ToString(ModeloSDK.getclasificacion(Convert.ToString(rowprovedor[2])));
+                        string[] words2_ = responce2.Split(',');
+                        newDocument.Valor_Clasificacion_2_proveedor = words2_[0].Trim();
+                        newDocument.Clasificacion_2_proveedor = words2_[1].Trim();
+                        Tipos_Datos_CRU.Dataclient new_clien = new Tipos_Datos_CRU.Dataclient()
+                        {
+                            id = newDocument.IDCliente,
+                            nombre_cliente = Convert.ToString(rowprovedor[0]),
+                            clasificacion_1 = response,
+                            clasificacion_2 = responce2
+                        };
+                        ListCliente.Add(new_clien);
+                    }
+                }
+                else {
+                    newDocument.Proveedor_codigo = ListCliente[set_cliente].nombre_cliente;
+
+                    string response = ListCliente[set_cliente].clasificacion_1;
+                    string[] words_ = response.Split(',');
+                    newDocument.Valor_Clasificacion_1_proveedor = words_[0].Trim();
+                    newDocument.Clasificacion_1_proveedor = words_[1].Trim();
+
+
+                    string responce2 = ListCliente[set_cliente].clasificacion_1;
+                    string[] words2_ = responce2.Split(',');
+                    newDocument.Valor_Clasificacion_2_proveedor = words2_[0].Trim();
+                    newDocument.Clasificacion_2_proveedor = words2_[1].Trim();
+                }
+
+               
 
 
                 //comienza a sacar los datos de movimientos
@@ -738,32 +842,153 @@ namespace IndicadoresV1._001.SDK_Admipaq.Controlador
                 {
                     Tipos_Datos_CRU.Movimientos1 newMovimiento = new Tipos_Datos_CRU.Movimientos1()
                     {
-                        IDProducto = Convert.ToString(rowM[0]).TrimEnd(' '),
-                        CantidadProducto = Convert.ToString(rowM[1]).TrimEnd(' '),
-                        PrecioProducto = Convert.ToString(rowM[2]).TrimEnd(' '),
+                        IDProducto = Convert.ToString(rowM[0]).Trim(),
+                        CantidadProducto = Convert.ToString(rowM[1]).Trim(),
+                        PrecioProducto = Convert.ToString(rowM[2]).Trim(),
                         Importe = (float)(double)rowM[3],
                         Total = (float)(double)rowM[4],
                         IVA = float.Parse(Math.Round((float)(double)rowM[4] - (float)(double)rowM[3], 2).ToString())
                     };
-                    //sacar los productos
+
+                    //sacar el dato del producto   ******************************************
+                    int set_product=-8;
+                    for (int l = 0; l < List_productos_datos.Count; l++)
+			        {
+			            if(List_productos_datos[l].id.Trim().Equals(newMovimiento.IDProducto.Trim()))
+                        {
+                            set_product=l;
+                            break;
+                        }
+			        }
+                    if(set_product<0)
+                    {//saco los datos del admipaq
+                        //sacar los productos
                     DataRow rowProducto = ModeloSDK.getProductos(newMovimiento.IDProducto);
                     if (rowProducto != null)
                     {
                         Tipos_Datos_CRU.Producto1 newProducto = new Tipos_Datos_CRU.Producto1()
                         {
-                            codigo = Convert.ToString(rowProducto[0]).TrimEnd(' '),
-                            Descripcion = Convert.ToString(rowProducto[1]).TrimEnd(' '),
-                            ValorClasificación1 = Convert.ToString(rowProducto[2]).TrimEnd(' '),
-                            ValorClasificación2 = Convert.ToString(rowProducto[3]).TrimEnd(' '),
-                            ValorClasificación3 = Convert.ToString(rowProducto[4]).TrimEnd(' '),
-                            Clasifiacion1 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(Convert.ToString(rowProducto[2]).TrimEnd(' ')),
-                            Clasificacion2 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(Convert.ToString(rowProducto[3]).TrimEnd(' ')),
-                            Clasificacion3 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(Convert.ToString(rowProducto[4]).TrimEnd(' '))
+                            codigo = Convert.ToString(rowProducto[0]).Trim(),
+                            Descripcion = Convert.ToString(rowProducto[1]).Trim(),
+                            ValorClasificación1 = Convert.ToString(rowProducto[2]).Trim(),
+                            ValorClasificación2 = Convert.ToString(rowProducto[3]).Trim(),
+                            ValorClasificación3 = Convert.ToString(rowProducto[4]).Trim(),
                         };
+                        //clasificacion 1 de productos 
+                        int clasifiacion1_produto = -8;
+                        for (int l = 0; l < List_clasificacion_producto1.Count; l++)
+                        {
+                            if (List_clasificacion_producto1[l].id.Trim().Equals(newProducto.ValorClasificación1.Trim()))
+                            {
+                                clasifiacion1_produto = l;
+                                break;
+                            }
+                        }
+                        if (clasifiacion1_produto < 0)
+                        {
+                            newProducto.Clasifiacion1 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(Convert.ToString(newProducto.ValorClasificación1.Trim()));
+                            Tipos_Datos_CRU.Clasificacion1 new_clas_produc = new Tipos_Datos_CRU.Clasificacion1()
+                            {
+                                id = newProducto.ValorClasificación1.Trim(),
+                                nombre_clasifiacion1 = newProducto.Clasifiacion1
+                            };
+                            List_clasificacion_producto1.Add(new_clas_produc);
+                        }
+                        else {
+                            newProducto.Clasifiacion1 = List_clasificacion_producto1[clasifiacion1_produto].nombre_clasifiacion1;
+                        }
+                        //fin clasifiacion 1 de productos
+                        //clasificacion 2 de productos
+                        int clasifiacion2_produto = -8;
+                        for (int l = 0; l < List_clasificacion_producto2.Count; l++)
+                        {
+                            if (List_clasificacion_producto2[l].id.Trim().Equals(newProducto.ValorClasificación2.Trim()))
+                            {
+                                clasifiacion2_produto = l;
+                                break;
+                            }
+                        }
+                        if (clasifiacion2_produto < 0)
+                        {
+                            newProducto.Clasificacion2 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(Convert.ToString(newProducto.ValorClasificación2.Trim()));
+                            Tipos_Datos_CRU.Clasificacion1 new_clas_produc = new Tipos_Datos_CRU.Clasificacion1()
+                            {
+                                id = newProducto.ValorClasificación2.Trim(),
+                                nombre_clasifiacion1 = newProducto.Clasificacion2
+                            };
+                            List_clasificacion_producto2.Add(new_clas_produc);
+                        }
+                        else
+                        {
+                            newProducto.Clasificacion2 = List_clasificacion_producto2[clasifiacion2_produto].nombre_clasifiacion1;
+                        }
+                        //fin clasificacion 2 de productos
+                        //clasificacion 3 de productos
+                        int clasifiacion3_produto = -8;
+                        for (int l = 0; l < List_clasificacion_producto3.Count; l++)
+                        {
+                            if (List_clasificacion_producto3[l].id.Trim().Equals(newProducto.ValorClasificación3.Trim()))
+                            {
+                                clasifiacion3_produto = l;
+                                break;
+                            }
+                        }
+                        if (clasifiacion3_produto < 0)
+                        {
+                            newProducto.Clasificacion3 = ModeloSDK.GetValoresClasificacionClientesPRoveedores(newProducto.ValorClasificación3.Trim());
+                            Tipos_Datos_CRU.Clasificacion1 new_clas_produc = new Tipos_Datos_CRU.Clasificacion1()
+                            {
+                                id = newProducto.ValorClasificación3.Trim(),
+                                nombre_clasifiacion1 = newProducto.Clasificacion3
+                            };
+                            List_clasificacion_producto3.Add(new_clas_produc);
+                        }
+                        else
+                        {
+                            newProducto.Clasificacion3 = List_clasificacion_producto3[clasifiacion3_produto].nombre_clasifiacion1;
+                        }
+                        //fin clasificacion 3 de productos luna
+                        Tipos_Datos_CRU.Producto_data new_prod = new Tipos_Datos_CRU.Producto_data()
+                        {
+                            id = newMovimiento.IDProducto,
+                            codigo = newProducto.codigo,
+                            Descripcion = newProducto.codigo,
+                            ValorClasificación1 = newProducto.ValorClasificación1,
+                            ValorClasificación2 = newProducto.ValorClasificación2,
+                            ValorClasificación3 = newProducto.ValorClasificación3,
+                            Clasifiacion1 = newProducto.Clasifiacion1,
+                            Clasificacion2 = newProducto.Clasificacion2,
+                            Clasificacion3 = newProducto.Clasificacion3,
+                        };
+                        List_productos_datos.Add(new_prod);
                         newMovimiento.producto = newProducto;
                     }
                     else newMovimiento.producto = null;//como tiene producto o marco algun error pon el producto como null
                     ListMovimientos.Add(newMovimiento);
+                    }else{//ya tengo los datos almacenados en el arreglo de list_product
+                        //sacar los productos
+                    
+                        Tipos_Datos_CRU.Producto1 newProducto = new Tipos_Datos_CRU.Producto1()
+                        {
+                            codigo = List_productos_datos[set_product].codigo,
+                            Descripcion = List_productos_datos[set_product].Descripcion,
+                            ValorClasificación1 = List_productos_datos[set_product].ValorClasificación1,
+                            ValorClasificación2 = List_productos_datos[set_product].ValorClasificación2,
+                            ValorClasificación3 = List_productos_datos[set_product].ValorClasificación3,
+                            Clasifiacion1 = List_productos_datos[set_product].Clasifiacion1,
+                            Clasificacion2 = List_productos_datos[set_product].Clasificacion2,
+                            Clasificacion3 = List_productos_datos[set_product].Clasificacion3,
+                            
+                        };
+                        
+                        //fin clasificacion 3 de productos
+                        newMovimiento.producto = newProducto;
+                    
+                            ListMovimientos.Add(newMovimiento);
+
+                    }
+                 //}//no null
+                    
                 }
 
                 newDocument.Listmovimiento = ListMovimientos;//ya se agregaron la lista de los movimientos

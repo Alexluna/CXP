@@ -42,3 +42,25 @@ F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Gen
 F:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.exe
 D:\disco c\Indicadores\CXP\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.pdb
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.exe
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.pdb
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.exe
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\IndicadoresV1.001.pdb
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\MainWindow.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Contenedor Principal\AplicacionPrincipal.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CRU\Indicadores CRU.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\CXP\Indicadores CXP.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Principal\Principal.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\App.g.cs
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001_MarkupCompile.cache
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.g.resources
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1._001.Properties.Resources.resources
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\IndicadoresV1.001.csproj.GenerateResource.Cache
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\bin\Debug\WpfAnimatedGif.dll
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Cargador\CargadorBar.baml
+C:\Users\servidorpru\Desktop\ISEL\IndicadoresV1.001\IndicadoresV1.001\obj\x86\Debug\Vista\Cargador\CargadorBar.g.cs

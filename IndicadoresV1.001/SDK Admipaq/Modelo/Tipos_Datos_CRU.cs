@@ -89,6 +89,35 @@ namespace IndicadoresV1._001.SDK_Admipaq.Modelo
 
 
         #region CXP
+
+        public class Clasificacion1
+        {
+            public string id { get; set; }
+            public string nombre_clasifiacion1 { get; set; }
+        }
+
+        public class Dataclient
+        {
+            public string id { get; set; }
+            public string nombre_cliente { get; set; }
+            public string clasificacion_1 { get; set; }
+            public string clasificacion_2 { get; set; }
+        }
+
+
+        public class Producto_data
+        {
+            public string codigo { get; set; }
+            public string id { get; set; }
+            public string Descripcion { get; set; }
+            public string Clasifiacion1 { get; set; }
+            public string ValorClasificación1 { get; set; }
+            public string Clasificacion2 { get; set; }
+            public string ValorClasificación2 { get; set; }
+            public string Clasificacion3 { get; set; }
+            public string ValorClasificación3 { get; set; }
+        }
+
         public class Movimientos_Cuentas// CUENTAS POR PAGAR 
         {
 
